@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  User: MyString
+  Tag: MyString
+  PrivateMessage: MyString
+  Comment: MyString
+  Like: MyString
+
+two:
+  User: MyString
+  Tag: MyString
+  PrivateMessage: MyString
+  Comment: MyString
+  Like: MyString
