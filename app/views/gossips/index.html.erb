@@ -1,28 +1,47 @@
-<h1>Gossips</h1>
+<header role="main">
+     <!-- Main jumbotron for a primary marketing message or call to action -->
+     <div class="jumbotron" style="background-image: url(https://images.pexels.com/photos/568025/pexels-photo-568025.jpeg?cs=srgb&dl=black-and-white-black-and-white-depressed-depression-568025.jpg&fm=jpg); background-size: 100%;">
+       <div class="container">
+         <h1 class="display-3">Bienvenue sur <span id="tgp">The Gossip Project</span></h1>
+         <p><strong>Le site des potins de THP, réalisé par la team Toulouse</strong></p>
+       </div>
+     </div>
+</header>
 
-<br>
+<div class="container">
 
-<p>
+    <br>
 
-    <a href="<%= new_gossip_path%>" class="btn btn-success">Créer un gossip</a>
+    <div class="mx-auto" style="width: 200px;">
 
-</p>
+        <a href="<%= new_gossip_path%>" class="btn btn-success" style="width: 200px; height: 50px; font-size: 18pt;">Créer un gossip</a>
 
-<br>
+    </div>
 
-<% @gossips.each do |gossip|%>
+    <br>
 
-    <h2><%= gossip.title %> (<%= gossip.id%>)</h2>
+    <div class="album py-5 ">
+        <div class="row">
+        <% @gossips.each do|gossip| %>
 
+            <div class="col-md-4">
+            <div class="card" style="width: 80%;">
+                <div class="card-body">
 
-    <p><%= gossip.content%></p>
+                <h5 class="card-title">Potin n°<%= gossip.id%></h5>
+                <h6 class="card-subtitle mb-2 text-muted"> <%= gossip.user.first_name %></h6>
+                <p class="card-text">Titre: <%= gossip.title%></p>
 
-    <p>
+                <a href="<%= gossip_path(gossip.id)%>" class="btn btn-primary">Voir le gossip</a>
 
-        <a href="<%= gossip_path(gossip.id)%>" class="btn btn-primary">Voir le gossip</a>
+                <a href="<%= edit_gossip_path(gossip.id)%>" class="btn btn-secondary">Editer</a>
 
-        <a href="<%= edit_gossip_path(gossip.id)%>" class="btn btn-secondary">Editer</a>
+                </div>
+            </div>
+            <br>
+            </div>
 
-    </p>
-
-<% end %>
+        <% end %>
+        </div>
+    </div>
+</div>

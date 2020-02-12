@@ -29,10 +29,10 @@ class GossipsController < ApplicationController
      @gossip = Gossip.new(user: User.last, title: params[:title],content: params[:content])
     
      if @gossip.save
-      redirect_to gossips_path, notice: "Tu as crée un nouveau potin."
+      redirect_to gossips_path, notice: "Tu as créé un nouveau potin."
 
     else 
-      render "new"
+      render :new
       flash.alert = "Il y a un problème, recommence"
     end
 
@@ -45,7 +45,7 @@ class GossipsController < ApplicationController
       redirect_to gossips_path
 
     else
-      render "edit"
+      render :show
       flash.alert = "Il y a un problème, recommence"
     end
 
