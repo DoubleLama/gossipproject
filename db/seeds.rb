@@ -20,16 +20,18 @@ Comment.destroy_all
     )
 end
 
-10.times do
-  User.create!(
-    first_name: Faker::Superhero.prefix, 
-    last_name: Faker::Superhero.descriptor,
-    description: Faker::TvShows::TwinPeaks.quote,
-    email: Faker::Internet.email,
-    age: Faker::Number.between(from: 13, to: 99),
-    city: City.all.sample
-    )
-end
+# 10.times do
+#   User.create!(
+#     first_name: Faker::Superhero.prefix, 
+#     last_name: Faker::Superhero.descriptor,
+#     description: Faker::TvShows::TwinPeaks.quote,
+#     email: Faker::Internet.email,
+#     age: Faker::Number.between(from: 13, to: 99),
+#     city: City.all.sample
+#     )
+# end
+
+User.create!(first_name: "Anonymous", last_name: "Anon", description: "I'm an anonymous person", email: "anonymous@anonymous.com", age: 34, city: City.all.sample )
 
 20.times do
   Gossip.create!(

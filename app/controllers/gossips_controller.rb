@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
-  
+  skip_before_action :verify_authenticity_token
+
   def index
     @gossips = Gossip.all
   end
@@ -24,26 +25,32 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new
   end
 
-  def create
+  def create 
+     @gossip = Gossip.new(user: User.last, title: params[:title],content: params[:content])
     
-    @gossip = Gossip.create(gossip_params)
+     if @gossip.save
+      redirect_to gossips_path, notice: "Tu as crée un nouveau potin."
 
-    if @gossip.save
+    else 
+      render "new"
+      flash.alert = "Il y a un problème, recommence"
+    end
 
-    redirect_to gossips_path
+  end 
+
+  def destroy
+    @gossip = Gossip.find(params[:id])
+
+    if @gossip.destroy
+      redirect_to gossips_path
 
     else
-
-    render 'new'
-
+      render "edit"
+      flash.alert = "Il y a un problème, recommence"
     end
 
   end
-
-  def destroy
-
-  end
-
+  
   private
 
   def gossip_params
