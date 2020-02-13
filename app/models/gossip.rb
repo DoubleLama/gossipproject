@@ -6,6 +6,6 @@ class Gossip < ApplicationRecord
     has_many :likes, dependent: :destroy
   
   
-    validates :title, length: {in: 3..14}
+    validates :title, length: {in: 3..16}
     validates :content, :user, presence: true
 end

@@ -27,7 +27,8 @@ end
     description: Faker::TvShows::TwinPeaks.quote,
     email: Faker::Internet.email,
     age: Faker::Number.between(from: 13, to: 99),
-    city: City.all.sample
+    city: City.all.sample, 
+    password: "1234567"
     )
 end
 

@@ -1,16 +1,6 @@
 <h1>Connexion</h1>
 
- <% flash.each do |msg| %>
-
-    <div class="alert alert-danger" role="alert">
-
-    <%= msg %>
-
-    </div>
-
-<% end %>
-
- <%= form_tag url_for(action: 'create'), method: "user" do %>
+<%= form_tag url_for(action: 'create'), method: "post" do %>
 
       <%= label_tag 'Email' %>
 

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-    
-  get 'sessions/create'
-  get 'sessions/destoy'
-  get 'sessions/new'
   get '/static_pages/team', to: 'static_pages#team'
 
   get '/static_pages/contact', to: 'static_pages#contact'

@@ -6,8 +6,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get destoy" do
-    get sessions_destoy_url
+  test "should get destroy" do
+    get sessions_destroy_url
     assert_response :success
   end
 
