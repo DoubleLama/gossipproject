@@ -18,9 +18,20 @@
 
       <br>
 
+      <%= label_tag 'Prénom' %>
+
+      <%= text_field_tag 'first_name', @user.first_name %>
+
+      <br>
+      <%= label_tag 'Nom' %>
+
+      <%= text_field_tag 'last_name', @user.last_name %>
+
+      <br>
+
       <%= label_tag 'Mot de passe' %>
 
-      <%= text_area_tag 'password', @user.password %>
+      <%= text_field_tag 'password', @user.password %>
 
       <br>
 

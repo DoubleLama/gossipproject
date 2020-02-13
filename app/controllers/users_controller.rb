@@ -5,15 +5,15 @@ include SessionsHelper
   end
 
   def show
-    current_user
+    @user = User.find(params[:id])
   end
 
   def new
-    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password])
+    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password], city_id: rand(1..5))
    end
 
   def create
-    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password])
+    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password],city_id: rand(1..5))
 
     if @user.save
       redirect_to gossips_path, notice: "Bienvenue, nouvel utilisateur !"

@@ -29,7 +29,7 @@ before_action :authenticate_user, except: [:index]
   end
 
   def create
-     @gossip = Gossip.new(user: User.last, title: params[:title],content: params[:content])
+     @gossip = Gossip.new(user: current_user, title: params[:title],content: params[:content])
 
      if @gossip.save
       redirect_to gossips_path, notice: "Tu as créé un nouveau potin."
