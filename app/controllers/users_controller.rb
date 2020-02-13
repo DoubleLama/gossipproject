@@ -1,16 +1,26 @@
 class UsersController < ApplicationController
+  
+  def index
+  end
+  
   def show
     @user = User.find(params[:id])
   end
-
+  
   def new
-  end
+    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password])
+   end
 
   def create
-  end
+    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password])
 
-  def index
-  end
+    if @user.save
+      redirect_to gossips_path, notice: "Bienvenue, nouvel utilisateur !"
+    else 
+      render 'new'
+      flash.alert = "Il y a un problème, recommence"
+    end
+  end 
 
   def delete
   end
@@ -20,4 +30,11 @@ class UsersController < ApplicationController
 
   def update
   end
+
+private
+
+  def user_params
+    User.new(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], password: params[:password])
+  end
+
 end
