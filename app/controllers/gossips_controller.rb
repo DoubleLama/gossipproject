@@ -1,13 +1,15 @@
 class GossipsController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
   def index
     @gossips = Gossip.all
+    id = session[:user_id]
+    @user = User.find(id) #et hop, cette variable @user est l'instance User contenant toutes les infos de l'utilisateur connecté
   end
 
   def show
     @gossip = Gossip.find(params[:id])
     @user = @gossip.user
+
   end
 
   def edit
@@ -26,18 +28,18 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new
   end
 
-  def create 
+  def create
      @gossip = Gossip.new(user: User.last, title: params[:title],content: params[:content])
-    
+
      if @gossip.save
       redirect_to gossips_path, notice: "Tu as créé un nouveau potin."
 
-    else 
+    else
       render :new
       flash.alert = "Il y a un problème, recommence"
     end
 
-  end 
+  end
 
   def destroy
     @gossip = Gossip.find(params[:id])

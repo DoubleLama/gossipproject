@@ -3,18 +3,18 @@
   <head>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+
     <title>GossipProject</title>
   </head>
 
   <body>
       <% flash.each do |type, msg| %>
-      <div class="alert alert-danger" role="alert">
+      <div class="alert alert-success" role="alert">
       <%= msg %>
       </div>
       <% end %>
@@ -40,10 +40,16 @@
          <li class="nav-item">
             <%= link_to "S'inscrire", new_user_path, :class => "nav-link"%>
         </li>
+        <li class="nav-item">
+           <%= link_to "Se déconnecter", session_path(session.id),class:"btn btn-outline-danger", method: :delete %>
+       </li>
+       <li class="nav-item">
+          <%= link_to "#{User.find_by(id: session[:user_id]).email}", user_path(session.id)%>
+      </li>
         </ul>
     </div>
     </nav>
-  
+
     <%= yield %>
   </body>
 </html>
