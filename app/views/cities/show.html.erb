@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>Ville : <%= @city.name%> </h1>
+    <div class="album py-5 ">
+        <div class="row">
+        <% @city_gossips.each do |gossip| %>
+            <div class="col-md-4">
+            <div class="card" style="width: 80%;">
+                <div class="card-body">
+                <h5 class="card-title"><%=gossip.title%></h5>
+                <h6 class="card-subtitle mb-2 text-muted">By <%=gossip.user.first_name%></h6>
+                <p class="card-text"><%=gossip.content%></p>
+                <a href="#" class="card-link"><%= link_to "Read more", gossip_path(gossip.id) %></a>
+                </div>
+            </div>
+            <br>
+            </div>
+        <% end %>
+        </div>  
+    </div>
+</div>

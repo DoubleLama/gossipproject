@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <h1>Auteur</h1>
+    <br>
+    <p><strong>Prénom</strong> <br> <%= @user.first_name %></p>
+    <br>
+    <p><strong>Nom</strong> <br> <%= @user.last_name %></p>
+    <br>
+    <p><strong>Age</strong> <br> <%= @user.age %></p>
+    <br>
+    <p><strong>Description</strong> <br> <%= @user.description %></p>
+    <br>
+    <p><strong>Email</strong> <br> <%= @user.email %></p>
+    <br>
+    <p><strong>Ville</strong> <br> <%= @user.city.name %>
+    <%= link_to "Clique ici pour voir les gossips de cette ville", city_path(@user.city) %>
+    </p>
+  </div>
+</div>
+</body>
+</html>

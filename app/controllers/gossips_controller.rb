@@ -7,6 +7,7 @@ class GossipsController < ApplicationController
 
   def show
     @gossip = Gossip.find(params[:id])
+    @user = @gossip.user
   end
 
   def edit
@@ -45,12 +46,12 @@ class GossipsController < ApplicationController
       redirect_to gossips_path
 
     else
-      render :show
+      render :edit
       flash.alert = "Il y a un problème, recommence"
     end
 
   end
-  
+
   private
 
   def gossip_params
