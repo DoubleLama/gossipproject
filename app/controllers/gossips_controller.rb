@@ -9,7 +9,6 @@ before_action :authenticate_user, except: [:index]
   def show
     @gossip = Gossip.find(params[:id])
     @user = @gossip.user
-
   end
 
   def edit
@@ -19,9 +18,14 @@ before_action :authenticate_user, except: [:index]
   def update
     @gossip = Gossip.find(params[:id])
 
-    @gossip.update(gossip_params)
-
-    redirect_to gossip_path
+    if current_user == @gossip.user
+      @gossip.update(gossip_params)
+      redirect_to gossip_path
+    else
+      flash[:danger] = "Vous n'êtes pas l'auteur de ce gossip !"
+      redirect_to gossips_path
+    end
+    
   end
 
   def new
@@ -43,14 +47,21 @@ before_action :authenticate_user, except: [:index]
 
   def destroy
     @gossip = Gossip.find(params[:id])
-
-    if @gossip.destroy
-      redirect_to gossips_path
+    if current_user == @gossip.user
+    
+      if @gossip.destroy
+        redirect_to gossips_path
+  
+      else
+        render :edit
+        flash.alert = "Il y a un problème, recommence"
+      end
 
     else
-      render :edit
-      flash.alert = "Il y a un problème, recommence"
+      flash[:danger] = "Vous n'êtes pas l'auteur de ce gossip !"
+      redirect_to gossips_path
     end
+    
 
   end
 
