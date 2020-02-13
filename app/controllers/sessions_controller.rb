@@ -14,7 +14,7 @@ include SessionsHelper
       redirect_to gossips_path, notice: "Bienvenue #{User.find_by(id: session[:user_id]).first_name}!"
       # redirige où tu veux, avec un flash ou pas
     else
-      flash.now[:danger] = "Utilisateur ou mot de passe incorrect!"
+      flash.alert = "Utilisateur ou mot de passe incorrect!"
       @user = User.new
       render 'new'
     end
