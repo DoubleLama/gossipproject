@@ -43,9 +43,6 @@
         <li class="nav-item">
            <%= link_to "Se déconnecter", session_path(session.id),class:"btn btn-outline-danger", method: :delete %>
        </li>
-       <li class="nav-item">
-          <%= link_to "#{User.find_by(id: session[:user_id]).email}", user_path(session.id)%>
-      </li>
         </ul>
     </div>
     </nav>

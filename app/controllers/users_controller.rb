@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
-
-  skip_before_action :verify_authenticity_token
+include SessionsHelper
 
   def index
   end
 
   def show
-    id = session[:user_id]
-    @user = User.find(id)
+    current_user
   end
 
   def new

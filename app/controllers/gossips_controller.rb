@@ -1,9 +1,9 @@
 class GossipsController < ApplicationController
+include SessionsHelper
+before_action :authenticate_user, except: [:index]
 
   def index
     @gossips = Gossip.all
-    id = session[:user_id]
-    @user = User.find(id) #et hop, cette variable @user est l'instance User contenant toutes les infos de l'utilisateur connecté
   end
 
   def show
@@ -60,6 +60,15 @@ class GossipsController < ApplicationController
 
     params.require(:gossip).permit(:title, :content)
 
+  end
+
+  def authenticate_user
+    
+    unless current_user
+      flash[:danger] = "Vous devez être connecté"
+      redirect_to new_session_path
+    end
+    
   end
 
 end
