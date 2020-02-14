@@ -3,7 +3,8 @@
 <div class="container mt-5 form-group">
     <div class= "bg-light container fieldset mt-3 mr3 pt-3 fieldset col-lg-4 ">
     <h1 class="text-center border-bottom"><%= @gossip.title %></h1>
-    <p><%= @gossip.content%></p>
+    <br>
+    <p>"<%= @gossip.content%>"</p>
 
     <p>Auteur : <a href="<%= user_path(@user.id)%>"><%= @gossip.user.last_name%> <%= @gossip.user.first_name%></a>
     <p>

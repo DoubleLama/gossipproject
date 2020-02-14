@@ -1,23 +1,29 @@
-<h1 class="text-center mt-3">Connexion</h1>
-
 <div class="container mt-5 form-group">
 
-<%= form_tag url_for(action: 'create'), method: "post", class: "bg-light container fieldset mt-3 mr3 pt-3 fieldset col-lg-4 col-lg-offset-4" do %>
-<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class= "bg-light container fieldset mt-3 mr3 pt-3 fieldset col-lg-4 ">
 
-      <%= text_field_tag 'email', @user.email, class:"form-control", placeholder: "Email" %>
+        <h1 class="text-center">Connexion</h1>
+        <p class="border-bottom">
+        
+            <%= form_tag url_for(action: 'create'), method: "post" do %>
 
-      <br>
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+                <%= text_field_tag 'email', @user.email, class:"form-control", placeholder: "Email" %>
+
+                <br>
 
 
-      <%= password_field_tag 'password', @user.password, class:"form-control", placeholder: "Mot de passe" %>
+                <%= password_field_tag 'password', @user.password, class:"form-control", placeholder: "Mot de passe" %>
 
-      <br>
+                <br>
 
-     <div class="form-group">
+                <div class="form-group">
 
-        <button type="submit" class="float-right btn btn-primary">Connexion</button>
+                    <button type="submit" class="float-right btn btn-primary">Connexion</button>
+                </div>
+
+            <% end %>
+
     </div>
-
-<% end %>
 </div>

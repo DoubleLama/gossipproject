@@ -1,5 +1,3 @@
-<h1 class="text-center mt-3">Inscription</h1>
-
  <% flash.each do |msg| %>
 
     <div class="alert alert-danger" role="alert">
@@ -10,32 +8,42 @@
 
 <% end %>
 
-    <%= form_tag url_for(action: 'create'), method: "post", class: "bg-light container fieldset mt-3 mr3 pt-3 fieldset col-lg-4 col-lg-offset-4"  do %>
+<div class="container mt-5 form-group">
+
+    <div class= "bg-light container fieldset mt-3 mr3 pt-3 fieldset col-lg-4 ">
+    
+        <h1 class="text-center">Inscription</h1>
+        <p class="border-bottom">
+        
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
 
 
-        <%= text_field_tag 'first_name', @user.first_name, class: "form-control", placeholder: "Prénom" %>
+            <%= text_field_tag 'first_name', @user.first_name, class: "form-control", placeholder: "Prénom" %>
 
-         <br>
+            <br>
 
-        <%= text_field_tag 'last_name', @user.last_name, class: "form-control", placeholder: "Nom" %>
+            <%= text_field_tag 'last_name', @user.last_name, class: "form-control", placeholder: "Nom" %>
 
-         <br>
+            <br>
 
-        <%= text_field_tag 'email', @user.email, class: "form-control", placeholder: "Email" %>
+            <%= text_field_tag 'email', @user.email, class: "form-control", placeholder: "Email" %>
 
-         <br>
+            <br>
 
-        <%= password_field_tag 'password', @user.password, class: "form-control", placeholder: "Mot de passe" %>
+            <%= password_field_tag 'password', @user.password, class: "form-control", placeholder: "Mot de passe" %>
 
-         <br>
+            <br>
 
-        <div class="form-group">
+            <div class="form-group">
 
-        <button type="submit" class="float-right btn btn-success">Créer</button>
+            <button type="submit" class="float-right btn btn-success">Créer</button>
+
+        </div>
+
+    <% end %>
 
     </div>
-
-<% end %>
+</div>
     
 
 
