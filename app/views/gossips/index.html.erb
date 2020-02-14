@@ -23,14 +23,14 @@
 
     <div class="album py-5 container">
         <div class="row">
-        <% @gossips.each do|gossip| %>
+        <% @gossips.reverse_each do |gossip| %>
 
             <div class="col-md-4">
             <div class="card bg-light" style="width: 80%;">
                 <div class="card-body text-center">
 
-                <h5 class="card-title border-bottom ">Gossip n°<%= gossip.id%></h5>
-
+                <h5 class="card-title">Gossip n°<%= gossip.id%></h5>
+                <hr>
                 <h6 class="card-subtitle mb-2 font-weight-bold">Titre: <%= gossip.title%></h6>
 
                 <p class="card-text text-muted "><%= gossip.user.first_name %></p>

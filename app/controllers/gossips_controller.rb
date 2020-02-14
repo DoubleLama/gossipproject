@@ -22,7 +22,7 @@ before_action :authenticate_user, except: [:index]
       @gossip.update(gossip_params)
       redirect_to gossip_path
     else
-      flash[:danger] = "Vous n'êtes pas l'auteur de ce gossip !"
+      flash.alert = "Vous n'êtes pas l'auteur de ce gossip !"
       redirect_to gossips_path
     end
     
@@ -58,7 +58,7 @@ before_action :authenticate_user, except: [:index]
       end
 
     else
-      flash[:danger] = "Vous n'êtes pas l'auteur de ce gossip !"
+      flash.alert = "Vous n'êtes pas l'auteur de ce gossip !"
       redirect_to gossips_path
     end
     
@@ -76,7 +76,7 @@ before_action :authenticate_user, except: [:index]
   def authenticate_user
     
     unless current_user
-      flash[:danger] = "Vous devez être connecté"
+      flash.alert = "Vous devez être connecté"
       redirect_to new_session_path
     end
     
