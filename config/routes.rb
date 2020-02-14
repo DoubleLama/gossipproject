@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'gossips#index'
+  root :to => 'gossips#index'
 
   get '/static_pages/team', to: 'static_pages#team'
 
