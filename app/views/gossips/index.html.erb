@@ -2,8 +2,9 @@
      <!-- Main jumbotron for a primary marketing message or call to action -->
      <div class="jumbotron" style="background-image: url(https://images.pexels.com/photos/568025/pexels-photo-568025.jpeg?cs=srgb&dl=black-and-white-black-and-white-depressed-depression-568025.jpg&fm=jpg); background-size: 100%;">
        <div class="container">
-         <h1 class="display-3">Bienvenue sur <span id="tgp">The Gossip Project</span></h1>
-         <p><strong>Le site des potins de THP, réalisé par la team Toulouse</strong></p>
+         <h1 class="display-3 text-jumbo text-black">Bienvenue sur The Gossip Project</h1>
+         <br>
+         <p class="text-jumbo text-black font-weight-bold">Le site des potins de THP, réalisé par la team Toulouse</p>
        </div>
      </div>
 </header>
@@ -12,28 +13,30 @@
 
     <br>
 
-    <div class="mx-auto" style="width: 200px;">
+    <div class="text-center mt-3 ">
 
-        <a href="<%= new_gossip_path%>" class="btn btn-success" style="width: 200px; height: 50px; font-size: 18pt;">Créer un gossip</a>
+         <%= link_to "Créer un gossip", new_gossip_path, class: "btn btn-success btn-lg"%>
 
     </div>
 
     <br>
 
-    <div class="album py-5 ">
+    <div class="album py-5 container">
         <div class="row">
         <% @gossips.each do|gossip| %>
 
             <div class="col-md-4">
-            <div class="card" style="width: 80%;">
-                <div class="card-body">
+            <div class="card bg-light" style="width: 80%;">
+                <div class="card-body text-center">
 
-                <h5 class="card-title">Potin n°<%= gossip.id%></h5>
-                <h6 class="card-subtitle mb-2 text-muted"> <%= gossip.user.first_name %></h6>
-                <p class="card-text">Titre: <%= gossip.title%></p>
+                <h5 class="card-title border-bottom ">Gossip n°<%= gossip.id%></h5>
 
-                <a href="<%= gossip_path(gossip.id)%>" class="btn btn-primary">Voir le gossip</a>
+                <h6 class="card-subtitle mb-2 font-weight-bold">Titre: <%= gossip.title%></h6>
 
+                <p class="card-text text-muted "><%= gossip.user.first_name %></p>
+
+                <%= link_to "Voir le gossip", gossip_path(gossip.id), class: "btn btn-primary"%>
+                
                 </div>
             </div>
             <br>

@@ -1,5 +1,3 @@
-<h1>Créer un gossip</h1>
-
  <% flash.each do |msg| %>
 
     <div class="alert alert-danger" role="alert">
@@ -10,28 +8,34 @@
 
 <% end %>
 
- <%= form_tag url_for(action: 'create'), method: "gossip" do %>
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    
-      <%= label_tag 'Titre' %>
+<div class="container mt-5 form-group">
+    <div class= "bg-light container fieldset mt-3 mr3 pt-3 fieldset col-lg-4 ">
+        <h1 class="text-center border-bottom">Créer un gossip</h1>
+        <br>
 
-      <%= text_field_tag 'title', @gossip.title %>
 
-      <br>
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
+        
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            
 
-      <%= label_tag 'Contenu' %>
+            <%= text_field_tag 'title', @gossip.title, class:"form-control", placeholder: "Titre" %>
 
-      <%= text_area_tag 'content', @gossip.content %>
+            <br>
 
-      <br>
 
-     <div class="form-group">
+            <%= text_area_tag 'content', @gossip.content, class:"form-control", placeholder: "Contenu du gossip"  %>
 
-        <button type="submit">Créer</button>
-    
+            <br>
+
+            <div class="form-group text-center">
+
+                 <button type="submit" class="btn btn-lg btn-success">Créer</button>
+            
+            </div>
+
+        <% end %>
     </div>
 
-<% end %>
-    
 
 

@@ -13,51 +13,70 @@
   </head>
 
   <body>
+
       <% flash.each do |type, msg| %>
       <div class="alert alert-success" role="alert">
       <%= msg %>
       </div>
       <% end %>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">The Gossip Project</a>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom ">
+     <%= link_to "The Gossip Project", gossips_path, class: "navbar-brand"%>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
         <li class="nav-item">
-            <%= link_to "Accueil", gossips_path, :class => "nav-link"%>
+            <%= link_to "Accueil", gossips_path, class: "nav-link"%>
         </li>
         <li class="nav-item">
-            <%= link_to "Team", static_pages_team_path, :class => "nav-link"%>
+            <%= link_to "Team", static_pages_team_path, class: "nav-link"%>
         </li>
         <li class="nav-item">
-            <%= link_to "Contact", static_pages_contact_path, :class => "nav-link"%>
+            <%= link_to "Contact", static_pages_contact_path, class: "nav-link"%>
         </li>
+	</ul>
 
-          <% if logged_in? %>
-            <li class="nav-item">
-            <%= link_to "#{current_user.first_name}", user_path(current_user.id), class:"nav-link text-primary"%>
-          </li>
-           <li class="nav-item">
-            <%= link_to "Se déconnecter", session_path(session.id), class:"nav-link text-danger", method: :delete %>
-          </li>
+		<div class="btn-group">
 
-          <% else %>
+		<button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="sr-only ">Toggle Dropdown</span>
+		</button>
+		
+		<div class="dropdown-menu bg-light">
+			<% if logged_in? %>
+					
+						<li class="nav-item">
+							<%= link_to "#{current_user.first_name}", user_path(current_user.id), class:"nav-link text-primary text-uppercase"%>
+						</li>
+						<li class="nav-item">
+							<%= link_to "Se déconnecter", session_path(session.id), class:"nav-link text-danger", method: :delete %>
+						</li>
+					
+						<% else %>
+					
+						<li class="nav-item">
+							<%= link_to "Se connecter", new_session_path, class: "nav-link text-primary"%>
+						</li>
+						<li class="nav-item">
+							<%= link_to "S'inscrire", new_user_path, class: "nav-link text-success"%>
+						</li>
+					
+						<% end %>
+		</div>
+		</div>
 
-          <li class="nav-item">
-              <%= link_to "Se connecter", new_session_path, :class => "nav-link text-primary"%>
-          </li>
-          <li class="nav-item">
-              <%= link_to "S'inscrire", new_user_path, :class => "nav-link text-success"%>
-          </li>
-
-          <% end %>
-        </ul>
-    </div>
+       
     </nav>
 
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
     <%= yield %>
+    
   </body>
 </html>
